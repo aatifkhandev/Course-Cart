@@ -1,31 +1,14 @@
 const express = require('express')
+const { userRouter } = require('./routes/user')
+const { courseRouter } = require('./routes/course')
 const app = express()
 const port = 3000
 
 
-app.post('/user/signup',(req,res)=>{
-res.json({
-    message:"sign-up"
-})
-})
+app.use('/user',userRouter)
+app.use('/course',courseRouter)
 
-app.post('/user/signin',(req,res)=>{
-res.json({
-    message:"sign-up"
-})
-})
 
-app.get('/courses',(req,res)=>{
-res.json({
-    message:"sign-up"
-})
-})
-
-app.get('/user/courses',(req,res)=>{
-res.json({
-    message:"sign-up"
-})
-})
 
 app.get('/course/purchase',(req,res)=>{
 res.json({
