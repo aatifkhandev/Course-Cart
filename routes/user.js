@@ -5,7 +5,7 @@ const userRouter = Router()
 
 userRouter.get('/purchases',(req,res)=>{
 res.json({
-    message:"sign-up"
+    message:"purchased successfully"
 })
 })
 
