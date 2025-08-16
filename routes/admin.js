@@ -17,6 +17,24 @@ res.json({
 })
 
 
+AdminRouter.post('/course',(req,res)=>{
+res.json({
+    message:"sign-up"
+})
+})
+
+AdminRouter.put('/course',(req,res)=>{
+res.json({
+    message:"sign-up"
+})
+})
+
+AdminRouter.get('/course/bulk',(req,res)=>{
+res.json({
+    message:"sign-up"
+})
+})
+
 module.exports = {
     AdminRouter:AdminRouter
 }
