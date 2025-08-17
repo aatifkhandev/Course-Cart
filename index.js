@@ -11,13 +11,12 @@ app.use('/course',courseRouter)
 app.use('/admin',AdminRouter)
 
 
-app.get('/course/purchase',(req,res)=>{
-res.json({
-    message:"sign-up"
-})
-})
+async function main(){
+   await mongoose.connect("mongodb+srv://aatifk:aatifk2001@cluster0.ji8obbw.mongodb.net/Course-Cart")
+   app.listen(port,()=>{
+       console.log(`listening on ${port}`);
+       
+   })
+}
 
-app.listen(port,()=>{
-    console.log(`listening on ${port}`);
-    
-})
+main()
