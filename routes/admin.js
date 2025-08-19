@@ -2,8 +2,7 @@ import {Router} from 'express'
 const AdminRouter  = Router()
 import bcrypt from 'bcrypt'
 import {adminModel} from "../db.js"
-
-const JWT_ADMIN_PASSWORD = "12121adfg"
+import { JWT_ADMIN_PASSWORD } from '../config.js'
 
 import {z} from 'zod'
 
