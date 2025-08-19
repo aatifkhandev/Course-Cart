@@ -1,4 +1,4 @@
-const  mongoose = require('mongoose');
+import mongoose from "mongoose";
 const Schema = mongoose.Schema
 const ObjectId = mongoose.Types.ObjectId 
 
@@ -36,7 +36,7 @@ const adminModel = mongoose.model("admin",adminSchema)
 const courseModel = mongoose.model("course",courseSchema)
 const purchaseModel = mongoose.model("purchase",purchaseSchema)
 
-module.exports = {
+export{
     userModel,
     adminModel,
     courseModel,
