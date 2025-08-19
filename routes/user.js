@@ -3,7 +3,7 @@ import bcrypt from 'bcrypt'
 import {parse, z} from 'zod'
 import { userModel } from '../db.js'
 import jwt from 'jsonwebtoken'
-const JWT_USER_PASSWORD = "abbbab"
+import { JWT_USER_PASSWORD } from '../config.js'
 
 const userRouter = Router()
 
