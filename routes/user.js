@@ -4,6 +4,8 @@ import {parse, z} from 'zod'
 import { userModel } from '../db.js'
 import jwt from 'jsonwebtoken'
 import { JWT_USER_PASSWORD } from '../config.js'
+import { userMiddleWare } from '../middlewares/userMiddleWare.js'
+
 
 const userRouter = Router()
 
@@ -95,7 +97,7 @@ userRouter.post('/signin', async (req, res) => {
 
 
 
-userRouter.get('/purchases',(req,res)=>{
+userRouter.get('/purchases',userMiddleWare,async(req,res)=>{
 res.json({
     message:"purchased successfully"
 })
