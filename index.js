@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const { userRouter } = require('./routes/user')
 const { courseRouter } = require('./routes/course')
@@ -13,7 +14,7 @@ app.use('/admin',AdminRouter)
 
 
 async function main(){
-   await mongoose.connect("mongodb+srv://aatifk:aatifk2001@cluster0.ji8obbw.mongodb.net/Course-Cart")
+   await mongoose.connect(process.env.MONGO_URL)
    console.log("Connected to mongo");
    
    app.listen(port,()=>{
