@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken'
-import { JWT_USER_PASSWORD } from '../config'
+import { JWT_USER_PASSWORD } from '../config.js'
 
 function userMiddleWare(req,res,next){
     const token = req.headers.token
