@@ -1,7 +1,7 @@
 import {Router} from 'express'
 import bcrypt from 'bcrypt'
 import {parse, z} from 'zod'
-import { userModel } from '../db.js'
+import { courseModel, purchaseModel, userModel } from '../db.js'
 import jwt from 'jsonwebtoken'
 import { JWT_USER_PASSWORD } from '../config.js'
 import { userMiddleWare } from '../middlewares/userMiddleWare.js'
@@ -98,8 +98,23 @@ userRouter.post('/signin', async (req, res) => {
 
 
 userRouter.get('/purchases',userMiddleWare,async(req,res)=>{
+   const userId = req.userId
+   const purchases =  await purchaseModel.find({
+      userId,
+    })
+    let purchasedCoursesId = []
+    for(let i=0;i<purchases.length;i++){
+       purchasedCoursesId.push(purchases[i].courseId)
+    }
+    const coursesData = await courseModel.find({
+      _id:{$in:purchasedCoursesId}
+   
+      //  _id:{$in:purchases.map(x=>x.courseId)}
+
+    })
 res.json({
-    message:"purchased successfully"
+    purchases,
+    coursesData
 })
 })
 
