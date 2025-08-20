@@ -1,12 +1,13 @@
 import {Router} from 'express'
 const AdminRouter  = Router()
 import bcrypt from 'bcrypt'
-import {adminModel} from "../db.js"
+import {adminModel, courseModel} from "../db.js"
 import { JWT_ADMIN_PASSWORD } from '../config.js'
 
 import {z} from 'zod'
 
 import jwt from 'jsonwebtoken'
+import { adminMiddleWare } from '../middlewares/adminMiddleWare.js'
 
 AdminRouter.post('/signup',async(req,res)=>{
 
@@ -95,9 +96,23 @@ const schema = z.object({
 
 
 
-AdminRouter.post('/course',(req,res)=>{
+AdminRouter.post('/course', adminMiddleWare,async(req,res)=>{
+  
+  const adminId = req.userId
+
+  const{title,description , imageUrl ,price} = req.body
+    
+  const course = await courseModel.create({
+       title:title,
+       description:description,
+       imageURL:imageUrl,
+       creatorId:adminId
+  })
+
+
 res.json({
-    message:"sign-up"
+    message:"course created",
+    courseId : course._id
 })
 })
 
