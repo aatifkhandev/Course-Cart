@@ -1,11 +1,13 @@
-require('dotenv').config()
-const express = require('express')
-const { userRouter } = require('./routes/user')
-const { courseRouter } = require('./routes/course')
-const { AdminRouter } = require('./routes/admin')
+import 'dotenv/config'
+console.log(process.env.MONGO_URL);
+
+import express from 'express'
+import  {courseRouter} from './routes/course.js'
+import {AdminRouter} from './routes/admin.js'
+import { userRouter } from "./routes/user.js";
 const app = express()
 const port = 3000
-const mongoose = require('mongoose')
+import {mongoose} from 'mongoose'
 
 app.use(express.json())
 app.use('/user',userRouter)
